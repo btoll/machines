@@ -1,0 +1,19 @@
+[Exec]
+DropCapability=\
+	CAP_NET_ADMIN \
+	CAP_SETUID \
+	CAP_SYS_ADMIN \
+	CAP_SYS_CHROOT \
+	CAP_SYS_RAWIO \
+	CAP_SYSLOG
+Hostname=kilgore-trout
+NoNewPrivileges=true
+Parameters=/hugo.sh
+PrivateUsers=true
+ProcessTwo=true
+ResolvConf=copy-host
+Timezone=copy
+
+[Files]
+Bind=/srv/projects/benjamintoll.com:/src
+

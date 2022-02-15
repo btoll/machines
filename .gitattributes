@@ -1,0 +1,1 @@
+*.zeds !text !filter !merge !diff
