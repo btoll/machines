@@ -1,0 +1,11 @@
+[Exec]
+DropCapability=all
+Hostname=kilgore-trout
+NoNewPrivileges=true
+Parameters=python3 -m http.server
+PrivateUsers=true
+ProcessTwo=true
+ResolvConf=copy-host
+Timezone=copy
+WorkingDirectory=/build
+
