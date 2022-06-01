@@ -7,7 +7,7 @@ The tag represents the version of Hugo.
 For example, to download the version of Hugo 0.80.0:
 
 ```
-docker pull btoll/hugo:0.80.0
+$ docker pull btoll/hugo:0.80.0
 ```
 
 [`btoll/hugo` on Docker Hub]
@@ -44,7 +44,11 @@ docker pull btoll/hugo:0.80.0
 ### Creating a New Article
 
 ```
-docker run --rm -e METHOD=new -e ARTICLE=kubernetes -v $HOME/projects/benjamintoll.com:/src btoll/hugo:0.80.0
+$ docker run --rm -e METHOD=new -e ARTICLE=soothing_the_savage_breast -v $HOME/projects/benjamintoll.com:/src btoll/hugo:0.80.0
+
+or
+
+$ sudo systemd-nspawn --machine hugo --setenv ARTICLE=soothing_the_savage_breast --setenv METHOD=new --quiet
 ```
 
 ### Publishing
@@ -52,7 +56,7 @@ docker run --rm -e METHOD=new -e ARTICLE=kubernetes -v $HOME/projects/benjaminto
 Use the `contrast-hugo` theme and output the results to the `out` directory on the host:
 
 ```
-docker run --rm -e METHOD=publish -e THEME=contrast-hugo -e DESTINATION=out -v $HOME/projects/benjamintoll.com:/src btoll/hugo:0.80.0
+$ docker run --rm -e METHOD=publish -e THEME=contrast-hugo -e DESTINATION=out -v $HOME/projects/benjamintoll.com:/src btoll/hugo:0.80.0
 ```
 
 > Note that `METHOD=publish` is unnecessary as `publish` is the default operation.
@@ -60,7 +64,13 @@ docker run --rm -e METHOD=publish -e THEME=contrast-hugo -e DESTINATION=out -v $
 Use the default `hugo-lithium-them` theme and the default `public` destination on the host but change the location of the website source code to `foo`:
 
 ```
-docker run --rm -e SOURCE=foo -v $HOME/projects/benjamintoll.com:/foo btoll/hugo:0.80.0
+$ docker run --rm -e SOURCE=foo -v $HOME/projects/benjamintoll.com:/foo btoll/hugo:0.80.0
+```
+
+If using `systemd-nspawn` to manager your containers, you can publish like this:
+
+```
+$ sudo systemd-nspawn --machine hugo --quiet
 ```
 
 [Hugo]: https://gohugo.io/
