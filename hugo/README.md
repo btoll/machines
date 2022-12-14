@@ -7,36 +7,12 @@ The tag represents the version of Hugo.
 ## Installing
 
 ### Docker
-#
-For example, to download the version of Hugo 0.80.0:
-
+ 
 ```
 $ docker pull btoll/hugo:0.80.0
 ```
 
 [`btoll/hugo` on Docker Hub]
-
-#### Supported configs
-
-- `BASE_URL`
-    + Defaults to `/`
-
-- `DESTINATION`
-    + `Hugo` will output the "compiled" website to this location on the host.  It will create the directory if not present.
-    + Defaults to `public`
-
-- `METHOD`
-    + Both creating new articles and publish is supported.
-        - Creating (`METHOD=new`) will add the file to the `./content/post/` directory on the host.
-    + Defaults to `publish`
-
-- `SOURCE`
-    + This is the location in the container into which the host directory should be mapped via a bind mount.
-    + If a custom location (other than `/src`) is needed, make sure to provide it as both the environment variable to `docker run` **and** and the destination location in the host to the bind mount (`-v`).
-    + Defaults to `/src`
-
-- `THEME`
-    + Defaults to `hugo-lithium-theme`
 
 ### `systemd-nspawn`
 
@@ -75,8 +51,29 @@ As root:
 # cd /var/lib/machines
 # mkdir hugo
 # docker export $(docker create btoll/hugo:0.80.0) | tar -x -C hugo
-# systemd-nspawn -M hugo
 ```
+
+## Supported configs
+
+- `BASE_URL`
+    + Defaults to `/`
+
+- `DESTINATION`
+    + `Hugo` will output the "compiled" website to this location on the host.  It will create the directory if not present.
+    + Defaults to `public`
+
+- `METHOD`
+    + Both creating new articles and publish is supported.
+        - Creating (`METHOD=new`) will add the file to the `./content/post/` directory on the host.
+    + Defaults to `publish`
+
+- `SOURCE`
+    + This is the location in the container into which the host directory should be mapped via a bind mount.
+    + If a custom location (other than `/src`) is needed, make sure to provide it as both the environment variable to `docker run` **and** and the destination location in the host to the bind mount (`-v`).
+    + Defaults to `/src`
+
+- `THEME`
+    + Defaults to `hugo-lithium-theme`
 
 ## Supported themes
 
