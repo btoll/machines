@@ -1,6 +1,13 @@
 # tor-browser Dockerfile
 
-The Dockerfile uses Jessie Frazelle's [`tor-browser` Dockerfile](https://github.com/jessfraz/dockerfiles/tree/master/tor-browser) as for many of its bits.  There were enough changes to warrant its own Dockerfile.
+The `Dockerfile `uses Jessie Frazelle's [`tor-browser` Dockerfile](https://github.com/jessfraz/dockerfiles/tree/master/tor-browser) as for many of its bits.  There were enough changes to warrant its own Dockerfile.
+
+However, if you don't want to use Docker, then you're in luck!  The `install_tor_browser.sh` shell script is your friend, and it's a faithful recreation of what the `Dockerfile` is doing.
+
+For information on how to use it, read the ground-breaking article on `systemd-nspawn`, [On Running systemd-nspawn Containers].  Specifically, see the following [examples]:
+
+- [`debootstrap`](https://benjamintoll.com/2022/02/04/on-running-systemd-nspawn-containers/#debootstrap)
+- [`mkosi`](https://benjamintoll.com/2022/02/04/on-running-systemd-nspawn-containers/#mkosi)
 
 ## `systemd-nspawn`
 
@@ -36,7 +43,10 @@ As root:
 
 # References
 
-- [On Running systemd-nspawn Containers](https://benjamintoll.com/2022/02/04/on-running-systemd-nspawn-containers/)
+- [On Running systemd-nspawn Containers]
 - [jessfraz/tor-browser on Docker Hub](https://hub.docker.com/r/jessfraz/tor-browser)
 - [Jessie Frazelle's Blog](https://blog.jessfraz.com/)
+
+[On Running systemd-nspawn Containers]: https://benjamintoll.com/2022/02/04/on-running-systemd-nspawn-containers/
+[examples]: https://benjamintoll.com/2022/02/04/on-running-systemd-nspawn-containers/#examples
 
