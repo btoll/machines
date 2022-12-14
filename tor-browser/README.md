@@ -2,16 +2,11 @@
 
 The Dockerfile uses Jessie Frazelle's [`tor-browser` Dockerfile](https://github.com/jessfraz/dockerfiles/tree/master/tor-browser) as for many of its bits.  There were enough changes to warrant its own Dockerfile.
 
-## Create a container
+## `systemd-nspawn`
 
-```
-$ cd /var/lib/machines
-$ mkdir tor-browser
-$ docker export $(docker create btoll/tor-browser:latest) | tar -x -C tor-browser
-$ sudo systemd-nspawn -M tor-browser
-```
+### Create the service
 
-## Create the service
+> If this is the first config, you may have to create the `/etc/systemd/nspawn/` directory.
 
 `/etc/systemd/nspawn/tor-browser.nspawn`
 
@@ -28,8 +23,20 @@ User=noroot
 WorkingDirectory=/usr/local/bin/tor-browser
 ```
 
+### Create a container
+
+As root:
+
+```
+# cd /var/lib/machines
+# mkdir tor-browser
+# docker export $(docker create btoll/tor-browser:latest) | tar -x -C tor-browser
+# systemd-nspawn -M tor-browser
+```
+
 # References
 
+- [On Running systemd-nspawn Containers](https://benjamintoll.com/2022/02/04/on-running-systemd-nspawn-containers/)
 - [jessfraz/tor-browser on Docker Hub](https://hub.docker.com/r/jessfraz/tor-browser)
 - [Jessie Frazelle's Blog](https://blog.jessfraz.com/)
 

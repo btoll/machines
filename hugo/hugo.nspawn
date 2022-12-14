@@ -15,5 +15,5 @@ ResolvConf=copy-host
 Timezone=copy
 
 [Files]
-Bind=/srv/projects/benjamintoll.com:/src
+Bind=/home/btoll/projects/benjamintoll.com:/src
 

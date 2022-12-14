@@ -4,6 +4,10 @@ Create new articles and compile your markdown for your website with [Hugo] in a 
 
 The tag represents the version of Hugo.
 
+## Installing
+
+### Docker
+#
 For example, to download the version of Hugo 0.80.0:
 
 ```
@@ -12,7 +16,7 @@ $ docker pull btoll/hugo:0.80.0
 
 [`btoll/hugo` on Docker Hub]
 
-## Supported configs
+#### Supported configs
 
 - `BASE_URL`
     + Defaults to `/`
@@ -33,6 +37,46 @@ $ docker pull btoll/hugo:0.80.0
 
 - `THEME`
     + Defaults to `hugo-lithium-theme`
+
+### `systemd-nspawn`
+
+#### Create the service
+
+> If this is the first config, you may have to create the `/etc/systemd/nspawn/` directory.
+
+`/etc/systemd/nspawn/hugo.nspawn`
+
+```
+[Exec]
+DropCapability=\
+	CAP_NET_ADMIN \
+	CAP_SETUID \
+	CAP_SYS_ADMIN \
+	CAP_SYS_CHROOT \
+	CAP_SYS_RAWIO \
+	CAP_SYSLOG
+Hostname=kilgore-trout
+NoNewPrivileges=true
+Parameters=/hugo.sh
+PrivateUsers=true
+ProcessTwo=true
+ResolvConf=copy-host
+Timezone=copy
+
+[Files]
+Bind=/home/btoll/projects/benjamintoll.com:/src
+```
+
+#### Get the root filesystem
+
+As root:
+
+```
+# cd /var/lib/machines
+# mkdir hugo
+# docker export $(docker create btoll/hugo:0.80.0) | tar -x -C hugo
+# systemd-nspawn -M hugo
+```
 
 ## Supported themes
 
