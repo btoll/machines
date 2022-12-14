@@ -9,11 +9,11 @@ RUN useradd --uid ${UID} --create-home --home-dir $HOME ${USER} \
 	&& chown -R ${USER}:${USER} $HOME
 
 ARG BINDIR=/usr/local/bin/tor-browser
-ARG TOR_VERSION=11.0.4
+ARG TOR_VERSION=12.0
 
 ENV LANG C.UTF-8
 ENV TOR_FINGERPRINT 0x4E2C6E8793298290
-ENV TOR_DOWNLOAD tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
+ENV TOR_DOWNLOAD tor-browser-linux64-${TOR_VERSION}_ALL.tar.xz
 ENV TOR_SIG_FILE ${TOR_DOWNLOAD}.asc
 ENV TOR_URL https://dist.torproject.org/torbrowser/${TOR_VERSION}
 
