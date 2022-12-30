@@ -89,8 +89,10 @@ $ docker run --rm -e METHOD=new -e ARTICLE=soothing_the_savage_breast -v $HOME/p
 
 or
 
-$ sudo systemd-nspawn --machine hugo --setenv ARTICLE=soothing_the_savage_breast --setenv METHOD=new --quiet
+$ sudo systemd-nspawn --machine hugo --setenv ARTICLE=soothing_the_savage_breast --setenv METHOD=new --setenv USER=1000 --quiet
 ```
+
+> Change `--setenv USER=1000` to your user ID, otherwise it will default to `root`, which may not be what you want.
 
 ### Publishing
 
@@ -111,8 +113,10 @@ $ docker run --rm -e SOURCE=foo -v $HOME/projects/benjamintoll.com:/foo btoll/hu
 If using `systemd-nspawn` to manager your containers, you can publish like this:
 
 ```
-$ sudo systemd-nspawn --machine hugo --quiet
+$ sudo systemd-nspawn --machine hugo --setenv USER=1000 --quiet
 ```
+
+> Change `--setenv USER=1000` to your user ID, otherwise it will default to `root`, which may not be what you want.
 
 [Hugo]: https://gohugo.io/
 [`btoll/hugo` on Docker Hub]: https://hub.docker.com/r/btoll/hugo

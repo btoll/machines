@@ -36,6 +36,7 @@ then
     #       $HOME/projects/benjamintoll.com/content/post
     #
     hugo new "post/$ARTICLE.md" --theme "/themes/$THEME"
+    chown "$USER":"$USER" "$SOURCE/content/post/$ARTICLE.md"
 else
     # Publishing.
     if [ ! -d "/themes/$THEME" ]
@@ -45,5 +46,6 @@ else
     fi
 
     hugo --source "$SOURCE" --theme "/themes/$THEME" --destination "$DESTINATION" --baseURL "$BASE_URL"
+    chown -R "$USER":"$USER" "$SOURCE/$DESTINATION"
 fi
 
