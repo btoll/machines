@@ -45,12 +45,33 @@ Bind=/home/btoll/projects/benjamintoll.com:/src
 
 #### Get the root filesystem
 
+#### Using Docker
+
 As root:
 
 ```
 # cd /var/lib/machines
 # mkdir hugo
 # docker export $(docker create btoll/hugo:0.80.0) | tar -x -C hugo
+```
+
+#### Using `systemd-nspawn`
+
+```
+$ sudo -s
+# apt-get install debootstrap
+# cd /var/lib/machines
+# mkdir hugo
+# debootstrap \
+    --arch=amd64 \
+    --variant=minbase \
+    bullseye hugo http://deb.debian.org/debian
+# cp /path/to/machines/hugo/*hugo.sh hugo
+# chroot hugo
+# ./install_hugo.sh
+# exit
+# exit
+$ sudo systemd-nspawn -M hugo --setenv USER=1000 --quiet
 ```
 
 ## Supported configs
