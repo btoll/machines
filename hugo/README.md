@@ -71,7 +71,6 @@ $ sudo -s
 # ./install_hugo.sh
 # exit
 # exit
-$ sudo systemd-nspawn -M hugo --setenv USER=1000 --quiet
 ```
 
 ## Supported configs
