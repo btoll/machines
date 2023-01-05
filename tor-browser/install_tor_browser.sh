@@ -9,10 +9,10 @@ cleanup() {
 
 USER=noroot
 BINDIR=/usr/local/bin/tor-browser
-TOR_VERSION=11.0.4
+TOR_VERSION=12.0.1
 LANG=C.UTF-8
 TOR_FINGERPRINT=0x4E2C6E8793298290
-TOR_DOWNLOAD="tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz"
+TOR_DOWNLOAD="tor-browser-linux64-${TOR_VERSION}_ALL.tar.xz"
 TOR_SIG_FILE="$TOR_DOWNLOAD.asc"
 TOR_URL="https://dist.torproject.org/torbrowser/$TOR_VERSION"
 
