@@ -35,7 +35,7 @@ then
     #
     #       $HOME/projects/benjamintoll.com/content/post
     #
-    hugo new "post/$ARTICLE.md" --theme "/themes/$THEME"
+    hugo new --source "$SOURCE" "post/$ARTICLE.md" --theme "/themes/$THEME"
     chown "$USER":"$USER" "$SOURCE/content/post/$ARTICLE.md"
 else
     # Publishing.
