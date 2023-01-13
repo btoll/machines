@@ -130,7 +130,7 @@ Use the default `hugo-lithium-them` theme and the default `public` destination o
 $ docker run --rm -e SOURCE=foo -v $HOME/projects/benjamintoll.com:/foo btoll/hugo:0.80.0
 ```
 
-If using `systemd-nspawn` to manager your containers, you can publish like this:
+If using `systemd-nspawn` to manage your containers, you can publish like this:
 
 ```
 $ sudo systemd-nspawn --machine hugo --setenv USER=1000 --quiet
