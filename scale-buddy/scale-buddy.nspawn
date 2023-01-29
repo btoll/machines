@@ -3,10 +3,10 @@ DropCapability=all
 Hostname=kilgore-trout
 NoNewPrivileges=true
 #Parameters=pip3 install --editable .
-Parameters=scale_buddy
 PrivateUsers=true
 ProcessTwo=true
 ResolvConf=copy-host
 Timezone=copy
-WorkingDirectory=/home/noroot
+WorkingDirectory=/home/noroot/scale_buddy
+User=noroot
 

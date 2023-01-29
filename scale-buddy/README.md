@@ -16,12 +16,12 @@ DropCapability=all
 Hostname=kilgore-trout
 NoNewPrivileges=true
 #Parameters=pip3 install --editable .
-Parameters=scale_buddy
 PrivateUsers=true
 ProcessTwo=true
 ResolvConf=copy-host
 Timezone=copy
-WorkingDirectory=/home/noroot
+WorkingDirectory=/home/noroot/scale_buddy
+User=noroot
 ```
 
 #### Get the root filesystem
@@ -62,5 +62,28 @@ As root:
 
 ## Examples
 
+```
+$ sudo systemd-nspawn --quiet --machine scale-buddy scale_buddy g
+G major:
+G  A  B  C  D  E  F♯
+```
+
+You could always create an alias to simplify things a bit:
+
+```
+$ alias sb="sudo systemd-nspawn --quiet --machine scale-buddy scale_buddy"
+$ sb g --with-minor
+G major:
+G  A  B  C  D  E  F♯
+
+G natural minor (Aeolian):
+G  A  B♭  C  D  E♭  F
+
+G harmonic minor:
+G  A  B♭  C  D  E♭  F♯
+
+G melodic minor (jazz minor):
+G  A  B♭  C  D  E  F♯
+```
 [`btoll/scale-buddy` on Docker Hub]: https://hub.docker.com/r/btoll/scale-buddy
 
