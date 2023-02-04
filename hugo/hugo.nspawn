@@ -6,6 +6,7 @@ DropCapability=\
 	CAP_SYS_CHROOT \
 	CAP_SYS_RAWIO \
 	CAP_SYSLOG
+Environment=USER=1000
 Hostname=kilgore-trout
 NoNewPrivileges=true
 Parameters=/hugo.sh
