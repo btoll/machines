@@ -1,0 +1,21 @@
+[Exec]
+DropCapability=\
+	CAP_NET_ADMIN \
+	CAP_SETUID \
+	CAP_SYS_ADMIN \
+	CAP_SYS_CHROOT \
+	CAP_SYS_RAWIO \
+	CAP_SYSLOG
+Environment=USER=1000
+Hostname=kilgore-trout
+NoNewPrivileges=true
+Parameters=/build_deb.sh
+PrivateUsers=true
+ProcessTwo=true
+ResolvConf=copy-host
+Timezone=copy
+
+[Files]
+Bind=/home/btoll/deb-build:/root/build
+Bind=/run/user/1000/gnupg/S.gpg-agent:/root/.gnupg/S.gpg-agent
+
