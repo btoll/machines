@@ -21,6 +21,11 @@ echo "DESTINATION: $DESTINATION"
 echo "METHOD: $METHOD"
 if [ "$METHOD" = new ]
 then
+    # Lop off the `.md` extenstion, if present.
+    if [ "${ARTICLE##*.}" = "md" ]
+    then
+        ARTICLE="${ARTICLE%.*}"
+    fi
     echo "ARTICLE: $ARTICLE"
 fi
 echo "THEME: $THEME"
