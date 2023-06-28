@@ -6,7 +6,9 @@ apt-get update
 apt-get install -y \
     debsigs \
     devscripts \
+    dh-golang \
     dh-make \
+    golang-any \
     openssh-server
 
 #locale-gen en_US.UTF-8
