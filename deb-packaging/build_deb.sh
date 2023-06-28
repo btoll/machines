@@ -4,7 +4,7 @@
 set -euxo pipefail
 
 DEB="${PACKAGE_NAME}_${PACKAGE_VERSION}_amd64.deb"
-BUILDDIR="/root/build/${PACKAGE_NAME}-${PACKAGE_VERSION}"
+BUILDDIR="/root/build/${PACKAGE_NAME}/${PACKAGE_NAME}-${PACKAGE_VERSION}"
 
 if [ ! -d "$BUILDDIR" ]
 then
@@ -35,6 +35,8 @@ dpkg-buildpackage \
 	--root-command=fakeroot \
 	--sign-key="$KEYID"
 
+# Sign and let end-user decide if they want to verify using `debsig-verify` the `_deborigin`
+# file that `debsigs` puts in the `.deb` package.
 debsigs --sign=origin -k "$KEYID" "../$DEB"
 chown -R "$USER":"$USER" /root/build
 
