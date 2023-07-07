@@ -4,7 +4,7 @@
 set -euxo pipefail
 
 DEB="${PACKAGE_NAME}_${PACKAGE_VERSION}_amd64.deb"
-BUILDDIR="/root/build/${PACKAGE_NAME}/${PACKAGE_NAME}-${PACKAGE_VERSION}"
+BUILDDIR="/root/build/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}-${PACKAGE_VERSION}"
 
 if [ ! -d "$BUILDDIR" ]
 then
