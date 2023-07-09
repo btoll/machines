@@ -5,29 +5,36 @@ set -euxo pipefail
 trap cleanup EXIT
 
 cleanup() {
-    rm -rf /build
+    rm -rf /root/build
 }
 
 DEB_BIN="${PACKAGE_NAME}_${PACKAGE_VERSION}_amd64.deb"
 DEB_SRC="${PACKAGE_NAME}_${PACKAGE_VERSION}.dsc"
 TARBALL="${PACKAGE_NAME}_${PACKAGE_VERSION}.tar.gz"
 
-BUILDDIRROOT="/root/build/${PACKAGE_NAME}/${PACKAGE_VERSION}"
+BUILDDIRROOT="/build/${PACKAGE_NAME}/${PACKAGE_VERSION}"
 BUILDDIR="$BUILDDIRROOT/${PACKAGE_NAME}-${PACKAGE_VERSION}"
 
 # We'll clone into this directory, but the packages will be
 # placed in its parent (/build) went built.
-WORKDIR="/build/${PACKAGE_NAME}-${PACKAGE_VERSION}"
+WORKDIR="/root/build/${PACKAGE_NAME}-${PACKAGE_VERSION}"
 
 # `git-clone` will create the nested directory structure.
-git clone "https://github.com/btoll/$PACKAGE_NAME.git" "$WORKDIR"
+if [ -n "$LOCAL" ] && [ "$LOCAL" = 1 ]
+then
+    echo "[INFO] Cloning local git repository bind-mounted at /clone."
+    git clone /clone "$WORKDIR"
+else
+    echo "[INFO] Cloning remote git repository."
+    git clone "https://github.com/btoll/$PACKAGE_NAME.git" "$WORKDIR"
+fi
 
 cd "$WORKDIR"
 
 # The following will get the long id from the list of secret keys.
 # Specifically, the `sed` command will parse this:
 #
-#       ssb   rsa4096/3A1314344B0D9912 2023-06-04 [S]
+#   ssb   rsa4096/3A1314344B0D9912 2023-06-04 [S]
 #
 KEYID=$(gpg \
     --list-secret-keys \
@@ -58,9 +65,9 @@ debsigs --sign=origin -k "$KEYID" "../$DEB_BIN"
 
 # Since `systemd` is watching the build dir, don't create it until the last possible moment.
 mkdir -p "$BUILDDIR"
-mv "/build/$DEB_BIN" "$BUILDDIR"
-mv "/build/$DEB_SRC" "$BUILDDIR"
-mv "/build/$TARBALL" "$BUILDDIR"
+mv "/root/build/$DEB_BIN" "$BUILDDIR"
+mv "/root/build/$DEB_SRC" "$BUILDDIR"
+mv "/root/build/$TARBALL" "$BUILDDIR"
 
-chown -R "$USER":"$USER" /root/build
+chown -R "$USER":"$USER" /build
 

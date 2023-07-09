@@ -31,7 +31,7 @@ ResolvConf=copy-host
 Timezone=copy
 
 [Files]
-Bind=/home/btoll/deb-build:/root/build
+Bind=/home/btoll/deb-build:/build
 Bind=/run/user/1000/gnupg/S.gpg-agent:/root/.gnupg/S.gpg-agent
 ```
 
