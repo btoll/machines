@@ -17,7 +17,7 @@ ENV TOR_DOWNLOAD tor-browser-linux64-${TOR_VERSION}_ALL.tar.xz
 ENV TOR_SIG_FILE ${TOR_DOWNLOAD}.asc
 ENV TOR_URL https://dist.torproject.org/torbrowser/${TOR_VERSION}
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     gnupg \
     wget \
 	xz-utils \

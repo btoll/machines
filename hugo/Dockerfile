@@ -18,7 +18,7 @@ RUN wget -O - "https://github.com/gohugoio/hugo/releases/download/v$VERSION/hugo
     | tar -xz -C /usr/bin
 
 ENV THEME hugo-lithium-theme
-RUN apk update \
+RUN apk update --no-cache \
     && apk add git \
     && mkdir /themes \
     && git clone https://github.com/niklasbuschmann/contrast-hugo.git /themes/contrast-hugo \

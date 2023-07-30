@@ -10,7 +10,7 @@ RUN useradd --uid ${UID} --create-home --home-dir $HOME ${USER} \
 
 ENV LANG C.UTF-8
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     gnupg \
     wget \
 	xz-utils \
@@ -26,7 +26,7 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- \
     | apt-key add - \
     && echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list \
     && apt-get update \
-    && apt-get install -y \
+    && apt-get install --no-install-recommends -y \
         code \
         libxshmfence1
 

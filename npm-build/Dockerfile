@@ -3,8 +3,6 @@ LABEL maintainer "Benjamin Toll <benjam72@yahoo.com>"
 
 ARG BUILD_DIR=/build
 
-RUN apt-get update
-
 RUN mkdir $BUILD_DIR \
     && chown -R $USER:$USER $BUILD_DIR
 
