@@ -8,6 +8,10 @@ cleanup() {
     rm -rf /root/build
 }
 
+#. "$HOME/.bashrc"
+#
+#GOBIN="$HOME/go/bin"
+
 DEB_BIN="${PACKAGE_NAME}_${PACKAGE_VERSION}_amd64.deb"
 DEB_SRC="${PACKAGE_NAME}_${PACKAGE_VERSION}.dsc"
 TARBALL="${PACKAGE_NAME}_${PACKAGE_VERSION}.tar.gz"
@@ -30,6 +34,19 @@ else
 fi
 
 cd "$WORKDIR"
+
+#if [ -f go.mod ]
+#then
+#    mkdir -p "$HOME/bin"
+#    GO_VERSION=$(sed -rn 's/^go ([0-9]\.[0-9]{1,2}\.?[0-9]{1,2})/\1/p' go.mod)
+#    if ! command -v "go$GO_VERSION"
+#    then
+#        go get "golang.org/dl/go$GO_VERSION@latest"
+#        "$GOBIN/go$GO_VERSION" download
+#        "$GOBIN/go$GO_VERSION" version
+#        "$GOBIN/go$GO_VERSION" env
+#    fi
+#fi
 
 # The following will get the long id from the list of secret keys.
 # Specifically, the `sed` command will parse this:
@@ -68,6 +85,8 @@ mkdir -p "$BUILDDIR"
 mv "/root/build/$DEB_BIN" "$BUILDDIR"
 mv "/root/build/$DEB_SRC" "$BUILDDIR"
 mv "/root/build/$TARBALL" "$BUILDDIR"
+
+ls -l "$BUILDDIR"
 
 chown -R "$USER":"$USER" /build
 

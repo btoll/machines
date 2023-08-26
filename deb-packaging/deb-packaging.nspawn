@@ -20,6 +20,6 @@ ResolvConf=copy-host
 Timezone=copy
 
 [Files]
-Bind=/home/btoll/projects/reprepro/packages:/build
+Bind=/srv/packages/deb:/build
 Bind=/run/user/1000/gnupg/S.gpg-agent:/root/.gnupg/S.gpg-agent
 
