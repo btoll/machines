@@ -27,7 +27,7 @@ echo "StreamLocalBindUnlink yes" >> /etc/ssh/sshd_config
 
 # If the .gnupg dir doesn't have the correct permissions, the key can't be imported.
 # Should be either 0600 or 0700.
-curl -LO https://github.com/btoll/gpg-agent-forwarding/raw/master/public.key
+curl -LO https://github.com/btoll/keyserver/blob/master/benjamintoll.key
 gpg --import public.key
 
 KEYID=$(gpg \

@@ -7,7 +7,7 @@ The tag represents the version of Hugo.
 ## Installing
 
 ### Docker
- 
+
 ```
 $ docker pull btoll/hugo:0.80.0
 ```
@@ -62,7 +62,6 @@ As root:
 $ sudo -s
 # apt-get install debootstrap
 # cd /var/lib/machines
-# mkdir hugo
 # debootstrap \
     --arch=amd64 \
     --variant=minbase \

@@ -43,7 +43,6 @@ Bind=/run/user/1000/gnupg/S.gpg-agent:/root/.gnupg/S.gpg-agent
 $ su -
 # apt-get install debootstrap
 # cd /var/lib/machines
-# mkdir deb-packaging
 # debootstrap \
     --arch=amd64 \
     --variant=minbase \
