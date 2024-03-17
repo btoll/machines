@@ -65,7 +65,7 @@ $ sudo -s
 # debootstrap \
     --arch=amd64 \
     --variant=minbase \
-    bullseye hugo http://deb.debian.org/debian
+    bookworm hugo http://deb.debian.org/debian
 # cp /path/to/machines/hugo/*hugo.sh hugo
 # chroot hugo
 # ./install_hugo.sh
